@@ -6,6 +6,7 @@ output "FortiGate_Public_IP" {
   value = format("https://%s", azurerm_public_ip.public_ip.ip_address)
 }
 
-output "FortiGate_Admin_Credentials" {
-  value = format("username: %s / password: %s", var.username, var.password)
+output "credentials" {
+  value = format("username: %s / password: %s", var.username, data.azurerm_key_vault_secret.fgt_password.value)
+  sensitive = true
 }

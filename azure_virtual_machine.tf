@@ -49,12 +49,12 @@ resource "azurerm_virtual_machine" "virtual_machine" {
   os_profile {
     computer_name  = local.hostname
     admin_username = var.username
-    admin_password = var.password
+    admin_password = data.azurerm_key_vault_secret.fgt_password.value
     custom_data = templatefile("${var.fgtvm_configuration}", {
       hostname     = local.hostname
       type         = local.vm_image["fortigate"].license_type
       license_file = var.license_file
-      webhook_uri  = data.azurerm_key_vault_secret.key_vault_secret.value
+      webhook_uri  = data.azurerm_key_vault_secret.webhook_uri.value
     })
   }
 

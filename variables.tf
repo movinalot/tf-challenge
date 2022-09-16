@@ -12,11 +12,6 @@ variable "username" {
   type = string
 }
 
-variable "password" {
-  type    = string
-  default = "Fortinet404!#"
-}
-
 variable "virtual_network_address_space" {
   default = "10.1.0.0/16"
 }
