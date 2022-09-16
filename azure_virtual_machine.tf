@@ -54,7 +54,7 @@ resource "azurerm_virtual_machine" "virtual_machine" {
       hostname     = local.hostname
       type         = local.vm_image["fortigate"].license_type
       license_file = var.license_file
-      webhook_uri  = var.webhook_uri
+      webhook_uri  = data.azurerm_key_vault_secret.key_vault_secret.value
     })
   }
 

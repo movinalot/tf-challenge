@@ -30,8 +30,3 @@ variable "license_file" {
   type    = string
   default = ""
 }
-
-variable "webhook_uri" {
-  type    = string
-  default = ""
-}
