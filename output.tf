@@ -7,6 +7,6 @@ output "FortiGate_Public_IP" {
 }
 
 output "credentials" {
-  value = format("username: %s / password: %s", var.username, data.azurerm_key_vault_secret.fgt_password.value)
+  value     = format("username: %s / password: %s", var.username, data.azurerm_key_vault_secret.fgt_password.value)
   sensitive = true
 }
