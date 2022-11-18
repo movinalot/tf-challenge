@@ -13,6 +13,8 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = "LRS"
   account_tier             = "Standard"
 
+  min_tls_version = "TLS1_2"
+  
   tags = {
     environment = local.environment_tag
   }

@@ -7,4 +7,4 @@ id:
   app: 5afb9494-a8c9-405b-aa2f-f6b6a3201551
 
 fail_pipeline:
-  risk_rating: 7
+  risk_rating: 5
