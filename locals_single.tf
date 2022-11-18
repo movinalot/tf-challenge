@@ -1,5 +1,5 @@
 locals {
-  resource_group_exists        = true
+  resource_group_exists        = false
   resource_group_name_combined = "${var.username}-${var.resource_group_name_suffix}"
 
   resource_group_name     = local.resource_group_exists ? data.azurerm_resource_group.resource_group.0.name : azurerm_resource_group.resource_group.0.name
