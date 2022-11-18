@@ -9,7 +9,7 @@ resource "azurerm_route_table" "route_table" {
 resource "azurerm_route" "route" {
   resource_group_name = local.resource_group_name
 
-  name                   = "rt-default"
+  name                   = "rt-default1"
   route_table_name       = azurerm_route_table.route_table.name
   address_prefix         = "0.0.0.0/0"
   next_hop_type          = "VirtualAppliance"
