@@ -1,15 +1,15 @@
----
-
 version: v1
 
 id:
   org: fe22681a-d011-451f-82cc-5e66fb0c426b
   app: 5afb9494-a8c9-405b-aa2f-f6b6a3201551
 
+resource:
+  serial_scan: false
+
 fail_pipeline:
   risk_rating: 7
 
 dast:
   url: http://juice-shop.orangeysky.com:3000
-  fortipentest_scanner: true #true|false
-  full_scan: false #true|false
+  full_scan: false
