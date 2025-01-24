@@ -14,7 +14,7 @@ locals {
       publisher    = "fortinet"
       offer        = "fortinet_fortigate-vm_v5"
       vm_size      = "Standard_D4as_v4"
-      version      = "latest" # an be a verrsion number as well, e.g. 6.4.9, 7.0.6, 7.2.0
+      version      = "latest" # an be a version number as well, e.g. 6.4.9, 7.0.6, 7.2.0
       license_type = "payg"   # can be byol, flex, or payg, make sure the license is correct for the sku
       sku = {
         byol = "fortinet_fg-vm2"
@@ -29,21 +29,21 @@ locals {
 
       name                 = "external"
       virtual_network_name = local.virtual_network_name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network.address_space[0], 8, 0)]
+      address_prefixes     = [cidrsubnet(tolist(azurerm_virtual_network.virtual_network.address_space)[0], 8, 0)]
     }
     "internal" = {
       resource_group_name = local.resource_group_name
 
       name                 = "internal"
       virtual_network_name = local.virtual_network_name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network.address_space[0], 8, 1)]
+      address_prefixes     = [cidrsubnet(tolist(azurerm_virtual_network.virtual_network.address_space)[0], 8, 1)]
     }
     "protected" = {
       resource_group_name = local.resource_group_name
 
       name                 = "protected"
       virtual_network_name = local.virtual_network_name
-      address_prefixes     = [cidrsubnet(azurerm_virtual_network.virtual_network.address_space[0], 8, 2)]
+      address_prefixes     = [cidrsubnet(tolist(azurerm_virtual_network.virtual_network.address_space)[0], 8, 2)]
     }
   }
 
@@ -53,8 +53,8 @@ locals {
       location            = var.location
 
       name                          = "nic-port1"
-      enable_ip_forwarding          = true
-      enable_accelerated_networking = true
+      ip_forwarding_enabled          = true
+      accelerated_networking_enabled = true
 
       ip_configurations = [
         {
@@ -70,9 +70,9 @@ locals {
       resource_group_name = local.resource_group_name
       location            = var.location
 
-      name                          = "nic-port2"
-      enable_ip_forwarding          = true
-      enable_accelerated_networking = true
+      name                           = "nic-port2"
+      ip_forwarding_enabled          = true
+      accelerated_networking_enabled = true
 
       ip_configurations = [
         {
